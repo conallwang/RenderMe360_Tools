@@ -21,7 +21,7 @@ You can either test some frame data in some view using [test_data.py](./test_dat
 
 **Some modifiable parameters**
 
-- DATA_ROOT: the root path of your RenderMe360 data.
-- ACTOR_ID: the actor index which you want to test or unfold.
-- UNFOLD_LIST: identify which items you want to unfold. (You can choose from these items: "image", "mask", "uv", "scan", "lmk_2d", "lmk_3d", "audio")
-- SKIP_SEQ: skip some expressions, speeches, or hairstyles.
+- *DATA_ROOT*: the root path of your RenderMe360 data.
+- *ACTOR_ID*: the actor index which you want to test or unfold.
+- *UNFOLD_LIST*: identify which items you want to unfold. (You can choose from these items: "image", "mask", "uv", "scan", "lmk_2d", "lmk_3d", "audio")
+- *SKIP_SEQ*: skip some expressions, speeches, or hairstyles.
