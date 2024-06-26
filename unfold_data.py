@@ -25,6 +25,10 @@ def save_general_data(savepath, raw_smc, anno_smc, item, f_id, c_id):
     if item == "image":
         image = raw_smc.get_img(c_id, "color", f_id)
         cv2.imwrite(savepath, image)
+    elif item == "masked_image":
+        image = raw_smc.get_img(c_id, "color", f_id)
+        mask = anno_smc.get_img(c_id, "mask", f_id)
+        cv2.imwrite(savepath, image * (mask / 255.0)[..., None])
     elif item == "mask":
         mask = anno_smc.get_img(c_id, "mask", f_id)
         cv2.imwrite(savepath, mask)
@@ -52,11 +56,12 @@ DATA_ROOT = "/path/to/RenderMe360/OpenXDLab___RenderMe-360/"
 ACTOR_ID = "0026"
 UNFOLD_LIST = [
     "image",
+    "masked_image",
     "mask",
     "uv",
-    "scan",
-    "lmk_2d",
-    "lmk_3d",
+    # "scan",
+    # "lmk_2d",
+    # "lmk_3d",
     # "audio",
 ]  # Choose from these items: "image", "mask", "uv", "scan", "lmk_2d", "lmk_3d", "audio"
 SKIP_SEQ = []
@@ -87,7 +92,7 @@ for seq in seqs:
     cam_info = raw_reader.get_Camera_info()
     actor_info = raw_reader.get_actor_info()
     n_frame = cam_info["num_frame"]
-    # n_frame = 1  # For test: only see frame 0
+    n_frame = 1  # For test: only see frame 0
     n_cam = cam_info["num_device"]
 
     print("Processing seq '{}' ... ".format(seq))

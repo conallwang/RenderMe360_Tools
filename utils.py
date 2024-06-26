@@ -6,6 +6,7 @@ from plyfile import PlyData, PlyElement
 
 ITEM2FORLDER = {
     "image": "images",
+    "masked_image": "masked_images",
     "mask": "masks",
     "uv": "uvs_256",
     "scan": "scans",
@@ -16,6 +17,7 @@ ITEM2FORLDER = {
 
 ITEM2EXT = {
     "image": ".png",
+    "masked_image": ".png",
     "mask": ".png",
     "uv": ".png",
     "scan": ".ply",
